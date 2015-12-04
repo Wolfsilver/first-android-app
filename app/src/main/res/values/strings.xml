@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">My App</string>
+    <string name="edit_message">Enter a message</string>
+    <string name="button_send">Send</string>
+    <string name="tick_picture">Tick</string>
+    <string name="cus_tick_picture">Custom Tick</string>
+    <string name="float_window">Float Window</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_activity_display_message">My Message</string>
+    <string name="title_activity_tick_picture">take</string>
+
+    <string name="action_search">Search</string>
+    <string name="hello_world">hello_world</string>
+    <string name="title_activity_camera">Camera</string>
+    <string name="title_activity_my_float_view">MyFloatViewActivity</string>
+    <string name="test">test</string>
+    <string name="web_string">Web</string>
+    <string name="title_activity_web">WebActivity</string>
+    <string name="t">-_-</string>
+</resources>

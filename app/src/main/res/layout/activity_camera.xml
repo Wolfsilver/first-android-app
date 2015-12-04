@@ -1,0 +1,53 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="300dp"
+                android:layout_height="500dp"
+                android:alpha="0.5"
+                android:background="#00361616"
+                tools:context="com.example.test.myapp.CameraActivity"
+    >
+
+
+    <FrameLayout
+        android:id="@+id/frameLayout"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="50dp">
+
+        <com.example.test.myapp.camera.preview.CameraSurfaceView
+            android:id="@+id/camera_surfaceview"
+            android:layout_width="0dip"
+            android:layout_height="0dip"/>
+    </FrameLayout>
+
+    <ImageButton
+        android:id="@+id/btn_shutter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:alpha="0"
+        android:background="@drawable/btn_shutter_background"
+        android:contentDescription="@string/test"/>
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:onClick="click"
+        android:text="@string/t"/>
+
+    <!--<WebView-->
+        <!--android:id="@+id/webView2"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:layout_alignParentLeft="true"-->
+        <!--android:layout_alignParentStart="true"-->
+        <!--android:layout_below="@+id/frameLayout"-->
+        <!--android:layout_marginBottom="50dp"/>-->
+
+
+</RelativeLayout>
