@@ -10,6 +10,9 @@ import android.view.SurfaceHolder;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup.LayoutParams;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.ImageButton;
 
 import com.example.test.myapp.camera.CameraInterface;
@@ -37,14 +40,28 @@ public class CameraActivity extends Activity implements CamOpenOverCallback {
 
             }
         };
-        openThread.start();
 
         setContentView(R.layout.activity_camera);
         initUI();
         initViewParams();
 
+        openThread.start();
 
         shutterBtn.setOnClickListener(new BtnListeners());
+
+        Thread web = new Thread(){
+            @Override
+            public void run() {
+                Log.d("d", "load webView...");
+                try{
+                    init();
+                }catch (Exception e){
+                    Log.e("error", e.getMessage());
+                }
+            }
+        };
+
+        web.start();
 
     }
 
@@ -103,7 +120,7 @@ public class CameraActivity extends Activity implements CamOpenOverCallback {
 
     /**
      * button按钮事件
-     * @param view
+     * @param view View
      */
     public void click(View view){
         Log.d("d", "button...");
@@ -127,26 +144,26 @@ public class CameraActivity extends Activity implements CamOpenOverCallback {
     }
 
 
-//    private WebView webView;
-//    /**
-//     * WebView 初始化
-//     */
-//    private void init(){
-//        webView = (WebView) findViewById(R.id.webView);
-//        //WebView加载web资源
-//
-//        WebSettings settings = webView.getSettings();
-//        settings.setJavaScriptEnabled(true);
-//        webView.loadUrl("http://www.baidu.com");
-//        //覆盖WebView默认使用第三方或系统默认浏览器打开网页的行为，使网页用WebView打开
-//        webView.setWebViewClient(new WebViewClient() {
-//            @Override
-//            public boolean shouldOverrideUrlLoading(WebView view, String url) {
-//                // TODO Auto-generated method stub
-//                //返回值是true的时候控制去WebView打开，为false调用系统浏览器或第三方浏览器
-//                view.loadUrl(url);
-//                return true;
-//            }
-//        });
-//    }
+    private WebView webView;
+    /**
+     * WebView 初始化
+     */
+    private void init(){
+        webView = (WebView) findViewById(R.id.webView);
+        //WebView加载web资源
+
+        WebSettings settings = webView.getSettings();
+        settings.setJavaScriptEnabled(true);
+        webView.loadUrl("http://www.baidu.com");
+        //覆盖WebView默认使用第三方或系统默认浏览器打开网页的行为，使网页用WebView打开
+        webView.setWebViewClient(new WebViewClient() {
+            @Override
+            public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                
+                //返回值是true的时候控制去WebView打开，为false调用系统浏览器或第三方浏览器
+                view.loadUrl(url);
+                return true;
+            }
+        });
+    }
 }
